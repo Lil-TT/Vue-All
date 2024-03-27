@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        /*
+        * resolve 函数 在回调函数中如果调用resolve方法，promise会由pending转换
+        * reject  函数 在回调函数中如果调用reject方法，promise会由pending转换为reject
+        * */
+        // 定义一个变量--承诺（等待状态的改变）
+        let promise = new Promise(function (resolve, reject){
+            console.log("function invoke")
+            resolve()
+        })
+
+        console.log("other code1")
+
+        // 状态已改变
+        promise.then(
+            function (){
+                // promise转换为 resolved状态时 会执行的函数
+                console.log("promise success")
+            },
+            function () {
+                // promise转换为 reject会执行的函数
+                console.log("promise fail")
+            }
+        )
+
+        console.log("other code2")
+    </script>
+</head>
+<body>
+
+</body>
+</html>
